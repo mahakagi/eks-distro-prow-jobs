@@ -54,9 +54,9 @@ postsubmits:
           &&
           build/lib/buildkit_check.sh
           &&
-          if make check-for-supported-release-branch -C $PROJECT_PATH; then cp -r "${HOME}/.docker" /home/prow/go/src/github.com/aws/eks-distro; fi
+          cp -r "${HOME}/.docker" /home/prow/go/src/github.com/aws/eks-distro
           &&
-          if make check-for-supported-release-branch -C $PROJECT_PATH; then make -j2 postsubmit-conformance; fi
+          make -j2 postsubmit-conformance
         env:
         - name: PROJECT_PATH
           value: "projects/kubernetes/kubernetes"
